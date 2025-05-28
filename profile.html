@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel ="stylesheet" href="Style.css">
+
+    <style>
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #c2c09b;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+    }
+    
+    .sidebar nav
+    {
+      background-color: #3e3d2b00;
+      box-shadow: none;
+    }
+   
+
+    .profile-pic {
+      border-radius: 10px;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 90px;
+      width: 100%;
+ 
+    }
+
+    .sidebar nav ul li {
+      padding: 10px 0;
+      font-size: 14px;
+      border-bottom: 1px solid #888;
+    }
+
+    .logout-btn {
+
+      background-color: #3e3d2b;
+      color: #fff;
+      padding: 10px;
+      width: 200px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .profile-area {
+      flex: 1;
+      background-color: #d6d0a2;
+      padding: 40px;
+      border-radius: 10px;
+      margin: 40px;
+      box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .title {
+      color: #f4ae3e;
+      margin: 0;
+    }
+
+    .subtitle {
+      color: #686758;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    form {
+      width: 100%;
+    }
+
+    .form-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
+
+    .form-row label {
+      width: 120px;
+      font-weight: bold;
+    }
+
+    .form-row input[type="text"] {
+      padding: 5px 10px;
+      border: 1px solid #999;
+      border-radius: 3px;
+      background-color: #fff;
+      font-size: 14px;
+    }
+
+    .form-row span {
+      font-size: 15px;
+      color: #3c3c3c;
+    }
+
+    .change-link {
+      font-size: 12px;
+      color: #f4ae3e;
+      margin-left: 10px;
+      text-decoration: none;
+    }
+
+    .edit-section {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      gap: 20px;
+    }
+
+    .profile-edit {
+      text-align: center;
+    }
+
+    .profile-edit img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+    }
+
+    .image-btn,
+    .save-btn {
+      background-color: #3e3d2b;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 3px;
+    }
+
+    #dob-day, #dob-month, #dob-year {
+      padding: 5px;
+      margin-right: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .nav-list a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+    .nav-list a:hover {
+  background-color: #3e3d2b;
+  color: #f4ae3e;
+  transform: translateX(5px);
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #4c4b2c;
+  color: #f4ce6b;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.logout-btn:hover {
+  background-color: #e74c3c;
+  transform: scale(1.05);
+}
+  </style>
+</head>
+<body>
+  
+  <div>
+    <header>
+      <div class="left">
+        <img src="/picture/logo.JPG" width="100px" height="90px" style="border-radius: 50%; margin-right: 10px;" />
+        <h3>Homely <a id="decor">Decor</a></h3>
+      </div>
+  
+      
+
+      <div class="right">
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Search...">
+          <button onclick="handleSearch()">
+            <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search" />
+          </button>
+        </div>
+        <a href="profile.html" id="profile">
+          <img src="" width="36px" height="36px" />
+        </a>
+        <a href="cart.html"><img src="/picture/pngimg.com - shopping_cart_PNG10.png" width="36px" height="36px" /></a>
+  
+        <!-- Hamburger menu -->
+        <button class="menu-toggle" onclick="toggleNav()">☰</button>
+      </div>
+    </header>
+  
+    <nav id="responsive-nav">
+      <a href="index.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="Products.html">Products</a>
+      <a href="Vouchers.html">Vouchers</a>
+    </nav>
+  </div>
+<script>
+    function toggleNav() {
+      document.getElementById("responsive-nav").classList.toggle("show");
+    }
+
+    function handleSearch() {
+const query = document.getElementById("searchInput").value.trim();
+if (query !== "") {
+alert("You searched for: " + query);
+// Optionally: redirect to a results page
+// window.location.href = "search.html?q=" + encodeURIComponent(query);
+} else {
+alert("Please enter a search term.");
+}
+}
+  </script>
+
+
+ <div class="container">
+  <aside class="sidebar">
+    <img id="sidebar-img" src="" alt="Profile Image" class="profile-pic" style="margin-top: 10px;"/>
+   
+   
+    <nav class="side">
+      <ul class="nav-list" style="      border-top: 1px solid #888;">
+        <li><a href="#"><strong>PROFILE</strong></a></li>
+        <li><a href="#">CHANGE PASSWORD</a></li>
+        <li><a href="#">PRIVACY SETTING</a></li>
+        <li><a href="#">NOTIFICATION SETTING</a></li>
+        <li><a href="#">ORDER HISTORY</a></li>
+      <li style="border-bottom: #3e3d2b00;"><a href="logout.html"><button class="logout-btn">LOG OUT</button></a>  </li>
+    
+    </ul>
+    </nav>
+  
+  </aside>
+
+  <main class="profile-area">
+    <h1 class="title">MY ACCOUNT</h1>
+    <p class="subtitle">Manage and protect your account</p>
+
+    <form id="account-form">
+      <div class="form-row">
+        <label>USERNAME:</label>
+        <input type="text" value="Homely_Decor" required />
+      </div>
+
+      <div class="form-row">
+        <label for="dob-day">DATE OF BIRTH:</label>
+        <select id="dob-day"></select>
+        <select id="dob-month"></select>
+        <select id="dob-year"></select>
+      </div>
+
+      <div class="form-row">
+        <label>EMAIL:</label>
+        <span id="email-display">HomelyDecor@gmail.com</span>
+        <input type="email" id="email-input" value="HomelyDecor@gmail.com" style="display: none;" />
+        <a href="#" class="change-link" onclick="toggleEdit('email')">CHANGE</a>
+        <button type="button" id="email-confirm" onclick="confirmEdit('email')" style="display: none;">CONFIRM</button>
+      </div>
+
+      <div class="form-row">
+        <label>NUMBER:</label>
+        <span id="number-display">091 234 5678</span>
+        <input type="text" id="number-input" value="091 234 5678" style="display: none;" />
+        <a href="#" class="change-link" onclick="toggleEdit('number')">CHANGE</a>
+        <button type="button" id="number-confirm" onclick="confirmEdit('number')" style="display: none;">CONFIRM</button>
+      </div>
+      <hr/>
+
+      <div class="edit-section">
+        <div class="profile-edit">
+          <img id="preview-img" src="" alt="User" />
+          <p>EDIT YOUR PROFILE</p>
+        </div>
+        <input type="file" id="file-input" style="display: none" accept="image/*" />
+        <button type="button" class="image-btn" onclick="document.getElementById('file-input').click();">SELECT IMAGE</button>
+        <button type="submit" class="save-btn">SAVE</button>
+      </div>
+    </form>
+  </main>
+</div>
+
+    <footer>
+    
+        <div class="parent">
+            <div class="FU">
+                <h3>FOLLOW US</h3>
+                <a href="https://www.facebook.com" target="_blank">FACEBOOK</a>
+                <a href="https://www.instagram.com" target="_blank">INSTAGRAM</a>
+            </div>
+        
+            <div class="contact">
+                <h3>CONTACT</h3>
+                <a href="mailto:example@email.com">EMAIL</a>
+                <a href="tel:+1234567890">NUMBER</a>
+                <a href="https://maps.google.com" target="_blank">LOCATION</a>
+            </div>
+        
+            <div class="help">
+                <h3>HELP</h3>
+                <a href="faqs.html">FAQs</a>
+                <a href="maintenance.html">MAINTENANCE TIPS</a>
+                <a href="warranty.html">WARRANTY INFORMATION</a>
+                <a href="wishlist.html">WISHLIST</a>
+            </div>
+    </div>
+    
+    
+        <h1>HOMELY <a id="decor">DECOR</a></h1>
+        <p >©HOMELY DECOR All rights Reserved</p>
+    
+    
+
+    
+    
+    </footer>
+    
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtn = document.querySelector(".logout-btn");
+
+  logoutBtn.addEventListener("click", (e) => {
+    const confirmLogout = confirm("Are you sure you want to log out?");
+    if (confirmLogout) {
+      // Simulate logout action
+      alert("You have been logged out.");
+      // Optionally, redirect to login page:
+      // window.location.href = "login.html";
+    } else {
+      // Prevent any form submission or action if cancelled
+      e.preventDefault();
+    }
+  });
+});
+
+
+
+      // Date dropdown population
+      const daySelect = document.getElementById("dob-day");
+      for (let d = 1; d <= 31; d++) {
+        let opt = document.createElement("option");
+        opt.value = d;
+        opt.textContent = d;
+        daySelect.appendChild(opt);
+      }
+  
+      const monthSelect = document.getElementById("dob-month");
+      const months = ["January", "February", "March", "April", "May", "June",
+                      "July", "August", "September", "October", "November", "December"];
+      months.forEach((month, index) => {
+        let opt = document.createElement("option");
+        opt.value = index + 1;
+        opt.textContent = month;
+        monthSelect.appendChild(opt);
+      });
+  
+      const yearSelect = document.getElementById("dob-year");
+      const currentYear = new Date().getFullYear();
+      for (let y = currentYear; y >= 1920; y--) {
+        let opt = document.createElement("option");
+        opt.value = y;
+        opt.textContent = y;
+        yearSelect.appendChild(opt);
+      }
+  
+      const fileInput = document.getElementById("file-input");
+  const previewImg = document.getElementById("preview-img");
+  const sidebarImg = document.getElementById("sidebar-img");
+  const saveButton = document.querySelector(".save-btn");
+
+  let selectedImageData = null; // Temp holder for selected image
+
+  // Load saved image on page load
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedImage = localStorage.getItem("profileImage");
+    if (savedImage) {
+      sidebarImg.src = savedImage;
+      previewImg.src = savedImage;
+    }
+  });
+
+  // Handle image selection
+  fileInput.addEventListener("change", function () {
+    const file = this.files[0];
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        selectedImageData = e.target.result;
+        previewImg.src = selectedImageData;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // Save image and update sidebar when SAVE button is clicked
+  saveButton.addEventListener("click", function (e) {
+    e.preventDefault(); // Prevent form submission
+
+    if (selectedImageData) {
+      localStorage.setItem("profileImage", selectedImageData);
+      sidebarImg.src = selectedImageData;
+      alert("Profile image saved!");
+    } else {
+      alert("Please select an image first.");
+    }
+  });
+      
+  
+      // Toggle edit input
+      function toggleEdit(field) {
+        const displaySpan = document.getElementById(`${field}-display`);
+        const inputField = document.getElementById(`${field}-input`);
+        const confirmBtn = document.getElementById(`${field}-confirm`);
+  
+        displaySpan.style.display = "none";
+        inputField.style.display = "inline-block";
+        confirmBtn.style.display = "inline-block";
+        inputField.focus();
+      }
+  
+      // Confirm edited input
+      function confirmEdit(field) {
+        const displaySpan = document.getElementById(`${field}-display`);
+        const inputField = document.getElementById(`${field}-input`);
+        const confirmBtn = document.getElementById(`${field}-confirm`);
+  
+        displaySpan.textContent = inputField.value;
+        displaySpan.style.display = "inline-block";
+        inputField.style.display = "none";
+        confirmBtn.style.display = "none";
+      }
+    </script>
+</body>
+</html>

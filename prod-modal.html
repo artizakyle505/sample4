@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel ="stylesheet" href="Style.css">
+    <style>
+ .product-page {
+            display: flex;
+            gap: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 900px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .product-image img {
+            width: 300px;
+            border-radius: 10px;
+        }
+        .product-info {
+            flex: 1;
+        }
+        .product-info h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .price {
+            color: #f4d06b;
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .quantity button {
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+        }
+        .add-to-cart-btn {
+            padding: 10px 20px;
+            background-color: #f4d06b;
+            border: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+    </style>
+</head>
+<script>
+  function loadProduct() {
+    const product = JSON.parse(localStorage.getItem("selectedProduct"));
+    if (!product) {
+      document.getElementById("productName").textContent = "Product not found";
+      return;
+    }
+
+    document.getElementById("productName").textContent = product.name;
+    document.getElementById("productPrice").textContent = `₱${parseFloat(product.price).toLocaleString()}`;
+    document.getElementById("productImage").src = product.image;
+  }
+
+  function increaseQuantity() {
+    const input = document.getElementById("quantity");
+    input.value = parseInt(input.value) + 1;
+  }
+
+  function decreaseQuantity() {
+    const input = document.getElementById("quantity");
+    if (parseInt(input.value) > 1) {
+      input.value = parseInt(input.value) - 1;
+    }
+  }
+
+  function validateQuantity() {
+    const input = document.getElementById("quantity");
+    if (parseInt(input.value) < 1 || isNaN(parseInt(input.value))) {
+      input.value = 1;
+    }
+  }
+
+  function addToCart() {
+    const quantity = document.getElementById("quantity").value;
+    const product = JSON.parse(localStorage.getItem("selectedProduct"));
+    alert(`Added ${quantity} × ${product.name} to cart.`);
+    // You can also push to cart array in localStorage here.
+  }
+
+  loadProduct();
+</script>
+
+<body>
+
+     
+    <div>
+        <header>
+          <div class="left">
+            <img src="/picture/logo.JPG" width="100px" height="90px" style="border-radius: 50%; margin-right: 10px;" />
+            <h3>Homely <a id="decor">Decor</a></h3>
+          </div>
+      
+          
+
+          <div class="right">
+            <div class="search-bar">
+              <input type="text" id="searchInput" placeholder="Search...">
+              <button onclick="handleSearch()">
+                <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search" />
+              </button>
+            </div>
+            <a href="profile.html" id="profile">
+              <img src="" width="36px" height="36px" />
+            </a>
+            <a href="cart.html"><img src="/picture/pngimg.com - shopping_cart_PNG10.png" width="36px" height="36px" /></a>
+      
+            <!-- Hamburger menu -->
+            <button class="menu-toggle" onclick="toggleNav()">☰</button>
+          </div>
+        </header>
+      
+        <nav id="responsive-nav">
+          <a href="index.html">Home</a>
+          <a href="About.html">About</a>
+          <a href="Products.html">Products</a>
+          <a href="Vouchers.html">Vouchers</a>
+        </nav>
+      </div>
+    <script>
+        function toggleNav() {
+          document.getElementById("responsive-nav").classList.toggle("show");
+        }
+
+        function handleSearch() {
+  const query = document.getElementById("searchInput").value.trim();
+  if (query !== "") {
+    alert("You searched for: " + query);
+    // Optionally: redirect to a results page
+    // window.location.href = "search.html?q=" + encodeURIComponent(query);
+  } else {
+    alert("Please enter a search term.");
+  }
+}
+
+
+      </script>
+
+<div class="product-page">
+    <div class="product-image">
+      <img id="productImage" src="" alt="Product Image" />
+    </div>
+    <div class="product-info">
+      <h1 id="productName">Loading...</h1>
+      <p class="price" id="productPrice">₱0.00</p>
+      <p><strong>Material:</strong> High-quality material</p>
+      <p><strong>Dimension:</strong> Standard size</p>
+      <p>Beautiful and functional furniture for your home.</p>
+  
+      <div class="quantity">
+        <button onclick="decreaseQuantity()">-</button>
+        <input type="number" id="quantity" value="1" min="1" oninput="validateQuantity()" />
+        <button onclick="increaseQuantity()">+</button>
+      </div>
+  
+      <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Similar Products</h2>
+    <div class="similar-products">
+      <div class="product-card">
+        <img src="/images/sofa.jpg" alt="Sofa" />
+        <p>Sleek Modern Sofa - ₱4,499.00</p>
+      </div>
+      <div class="product-card">
+        <img src="/images/table.jpg" alt="Table" />
+        <p>Minimalist Coffee Table - ₱2,299.00</p>
+      </div>
+      <div class="product-card">
+        <img src="/images/shelf.jpg" alt="Shelf" />
+        <p>Wooden Display Shelf - ₱3,099.00</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Customer Reviews</h2>
+    <div class="product-reviews">
+      <div class="review-card">
+        <p><strong>Jane D.</strong></p>
+        <p>⭐⭐⭐⭐⭐</p>
+        <p>So comfy and elegant! Definitely worth the price.</p>
+      </div>
+      <div class="review-card">
+        <p><strong>Mark L.</strong></p>
+        <p>⭐⭐⭐⭐</p>
+        <p>Perfect for my studio apartment. Very cozy!</p>
+      </div>
+      <div class="review-card">
+        <p><strong>Sophia T.</strong></p>
+        <p>⭐⭐⭐⭐⭐</p>
+        <p>Great material and looks classy in my living room.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function increaseQuantity() {
+      const input = document.getElementById("quantity");
+      input.value = parseInt(input.value) + 1;
+    }
+
+    function decreaseQuantity() {
+      const input = document.getElementById("quantity");
+      if (parseInt(input.value) > 1) {
+        input.value = parseInt(input.value) - 1;
+      }
+    }
+
+    function validateQuantity() {
+      const input = document.getElementById("quantity");
+      if (parseInt(input.value) < 1 || isNaN(parseInt(input.value))) {
+        input.value = 1;
+      }
+    }
+
+    function addToCart() {
+      const quantity = document.getElementById("quantity").value;
+      alert(`Added ${quantity} × Modern Chair to cart.`);
+    }
+  </script>
+
+
+<footer>
+    
+    <div class="parent">
+        <div class="FU">
+            <h3>FOLLOW US</h3>
+            <a href="https://www.facebook.com" target="_blank">FACEBOOK</a>
+            <a href="https://www.instagram.com" target="_blank">INSTAGRAM</a>
+        </div>
+    
+        <div class="contact">
+            <h3>CONTACT</h3>
+            <a href="mailto:example@email.com">EMAIL</a>
+            <a href="tel:+1234567890">NUMBER</a>
+            <a href="https://maps.google.com" target="_blank">LOCATION</a>
+        </div>
+    
+        <div class="help">
+            <h3>HELP</h3>
+            <a href="faqs.html">FAQs</a>
+            <a href="maintenance.html">MAINTENANCE TIPS</a>
+            <a href="warranty.html">WARRANTY INFORMATION</a>
+            <a href="wishlist.html">WISHLIST</a>
+        </div>
+</div>
+
+
+    <h1>HOMELY <a id="decor">DECOR</a></h1>
+    <p >©HOMELY DECOR All rights Reserved</p>
+
+
+
+
+</footer>
+
+    
+</body>
+</html>

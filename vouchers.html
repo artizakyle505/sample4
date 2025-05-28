@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href="Style.css">
+    <title>Document</title>
+    <style>
+        .voucher-section {
+          max-width: 1200px;
+          margin: auto;
+        }
+    
+        .voucher-section h1 {
+          color: #deb864;
+          font-size: 28px;
+          margin-bottom: 5px;
+        }
+    
+        .voucher-section p {
+          font-size: 14px;
+          margin-bottom: 30px;
+          color: #2e3c3c;
+        }
+    
+        .voucher-categories {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 20px;
+        }
+    
+        .voucher-card {
+          flex: 1 1 30%;
+          background-color: #5f634e;
+          color: white;
+          border-radius: 10px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          pointer-events: auto;
+        }
+    
+        .voucher-card:hover {
+          transform: scale(1.03);
+          box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+    
+        .voucher-card.claimed {
+          opacity: 0.4;
+          pointer-events: none;
+        }
+    
+        .voucher-header {
+          text-align: center;
+          font-size: 16px;
+          font-weight: bold;
+          color: #deb864;
+          margin-bottom: 10px;
+        }
+    
+        .voucher-body {
+          display: flex;
+          padding: 15px;
+          gap: 10px;
+          align-items: center;
+        }
+    
+        .voucher-img {
+          width: 60px;
+          height: 60px;
+          background-color: #333;
+          border: 2px dashed #bbb;
+          flex-shrink: 0;
+        }
+    
+        .voucher-text {
+          flex-grow: 1;
+        }
+    
+        .voucher-title {
+          font-weight: bold;
+          font-size: 14px;
+          margin-bottom: 4px;
+        }
+    
+        .voucher-desc {
+          font-size: 12px;
+        }
+    
+        .voucher-footer {
+          text-align: center;
+          padding: 10px;
+        }
+    
+        .claim-btn {
+          background-color: #deb864;
+          border: none;
+          padding: 6px 16px;
+          font-size: 12px;
+          text-transform: uppercase;
+          font-weight: bold;
+          cursor: pointer;
+          border-radius: 4px;
+          transition: background 0.3s ease;
+        }
+    
+        .claim-btn:hover {
+          background-color: #c9a73a;
+        }
+    
+        @media (max-width: 768px) {
+          .voucher-categories {
+            flex-direction: column;
+          }
+    
+          .voucher-card {
+            flex: 1 1 100%;
+          }
+        }
+      </style>
+</head>
+
+<body>
+       
+  <div>
+    <header>
+      <div class="left">
+        <img src="/picture/logo.JPG" width="100px" height="90px" style="border-radius: 50%; margin-right: 10px;" />
+        <h3>Homely <a id="decor">Decor</a></h3>
+      
+      </div>
+  
+      
+
+      <div class="right">
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Search...">
+          <button onclick="handleSearch()">
+            <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search" />
+          </button>
+        </div>
+        <a href="profile.html" id="profile">
+          <img src="" width="36px" height="36px" />
+        </a>
+        <a href="cart.html"><img src="/picture/pngimg.com - shopping_cart_PNG10.png" width="36px" height="36px" /></a>
+  
+        <!-- Hamburger menu -->
+        <button class="menu-toggle" onclick="toggleNav()">☰</button>
+      </div>
+    </header>
+  
+    <nav id="responsive-nav">
+      <a href="index.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="Products.html">Products</a>
+      <a href="Vouchers.html">Vouchers</a>
+    </nav>
+  </div>
+<script>
+    function toggleNav() {
+      document.getElementById("responsive-nav").classList.toggle("show");
+    }
+
+    function handleSearch() {
+const query = document.getElementById("searchInput").value.trim();
+if (query !== "") {
+alert("You searched for: " + query);
+// Optionally: redirect to a results page
+// window.location.href = "search.html?q=" + encodeURIComponent(query);
+} else {
+alert("Please enter a search term.");
+}
+}
+  </script>
+
+       
+  <div class="voucher-section">
+    <h1>VOUCHERS</h1>
+    <p>DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION</p>
+
+    <div class="voucher-categories">
+      <!-- Each voucher must have a unique data-id -->
+      <div class="voucher-card" data-id="voucher1">
+        <div class="voucher-header">SHIPPING DISCOUNT</div>
+        <div class="voucher-body">
+          <div class="voucher-img"></div>
+          <div class="voucher-text">
+            <div class="voucher-title">DISCOUNT TYPE</div>
+            <div class="voucher-desc">DESCRIPTION DESCRIPTION DESCRIPTION</div>
+          </div>
+        </div>
+        <div class="voucher-footer">
+          <button class="claim-btn">CLAIM</button>
+        </div>
+      </div>
+
+      <div class="voucher-card" data-id="voucher2">
+        <div class="voucher-header">PRODUCT DISCOUNT</div>
+        <div class="voucher-body">
+          <div class="voucher-img"></div>
+          <div class="voucher-text">
+            <div class="voucher-title">Buy One, Get One!</div>
+            <div class="voucher-desc">Buy 1 product and get 1 FREE!</div>
+          </div>
+        </div>
+        <div class="voucher-footer">
+          <button class="claim-btn">CLAIM</button>
+        </div>
+      </div>
+
+      <div class="voucher-card" data-id="voucher3">
+        <div class="voucher-header">SPECIAL DISCOUNT</div>
+        <div class="voucher-body">
+          <div class="voucher-img"></div>
+          <div class="voucher-text">
+            <div class="voucher-title">Loyalty Discount</div>
+            <div class="voucher-desc">₱800 OFF for returning customers</div>
+          </div>
+        </div>
+        <div class="voucher-footer">
+          <button class="claim-btn">CLAIM</button>
+        </div>
+      </div>
+
+      <div class="voucher-card" data-id="voucher4">
+        <div class="voucher-header">SEASONAL OFFER</div>
+        <div class="voucher-body">
+          <div class="voucher-img"></div>
+          <div class="voucher-text">
+            <div class="voucher-title">Holiday Special</div>
+            <div class="voucher-desc">20% OFF during the holidays!</div>
+          </div>
+        </div>
+        <div class="voucher-footer">
+          <button class="claim-btn">CLAIM</button>
+        </div>
+      </div>
+
+      <div class="voucher-card" data-id="voucher5">
+        <div class="voucher-header">NEW USER</div>
+        <div class="voucher-body">
+          <div class="voucher-img"></div>
+          <div class="voucher-text">
+            <div class="voucher-title">Welcome Bonus</div>
+            <div class="voucher-desc">₱500 OFF for first-time customers</div>
+          </div>
+        </div>
+        <div class="voucher-footer">
+          <button class="claim-btn">CLAIM</button>
+        </div>
+      </div>
+
+      <div class="voucher-card" data-id="voucher6">
+        <div class="voucher-header">REFERRAL DISCOUNT</div>
+        <div class="voucher-body">
+          <div class="voucher-img"></div>
+          <div class="voucher-text">
+            <div class="voucher-title">Invite a Friend</div>
+            <div class="voucher-desc">₱300 OFF when your friend makes a purchase</div>
+          </div>
+        </div>
+        <div class="voucher-footer">
+          <button class="claim-btn">CLAIM</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Run when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.voucher-card');
+
+      cards.forEach(card => {
+        const id = card.getAttribute('data-id');
+        const claimed = localStorage.getItem(id);
+
+        if (claimed === 'true') {
+          card.classList.add('claimed');
+        }
+
+        const button = card.querySelector('.claim-btn');
+        button.addEventListener('click', () => {
+          if (!card.classList.contains('claimed')) {
+            alert(`You claimed: ${id}`);
+            card.classList.add('claimed');
+            localStorage.setItem(id, 'true');
+          }
+        });
+      });
+    });
+  </script>
+
+     <footer>
+    
+    <div class="parent">
+        <div class="FU">
+            <h3>FOLLOW US</h3>
+            <a href="https://www.facebook.com" target="_blank">FACEBOOK</a>
+            <a href="https://www.instagram.com" target="_blank">INSTAGRAM</a>
+        </div>
+    
+        <div class="contact">
+            <h3>CONTACT</h3>
+            <a href="mailto:example@email.com">EMAIL</a>
+            <a href="tel:+1234567890">NUMBER</a>
+            <a href="https://maps.google.com" target="_blank">LOCATION</a>
+        </div>
+    
+        <div class="help">
+            <h3>HELP</h3>
+            <a href="faqs.html">FAQs</a>
+            <a href="maintenance.html">MAINTENANCE TIPS</a>
+            <a href="warranty.html">WARRANTY INFORMATION</a>
+            <a href="wishlist.html">WISHLIST</a>
+        </div>
+</div>
+
+
+    <h1>HOMELY <a id="decor">DECOR</a></h1>
+    <p >©HOMELY DECOR All rights Reserved</p>
+
+
+
+
+</footer>
+
+</body>
+</html>

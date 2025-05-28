@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap');
+
+body
+{
+    background-color: #f1ead8;
+    margin: 0;
+    padding: 0;
+    font-family: "Kaisei Decol", serif;
+  font-weight: 400;
+  font-style: normal;
+    
+}
+
+  
+
+header
+{
+    padding: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fbf5e9;
+    
+}
+
+#look
+{
+    border-radius: 30px;
+    width: 17rem;
+    height: 26px;
+    background-color: #231f20;
+    color: #ffffff;
+
+}
+
+nav
+{
+    font-weight: bold;
+    background-color: #4c4b2c;
+    padding: 10px;
+    height: 30px;
+    gap: 200px;
+    display: flex;
+    justify-content: space-evenly;
+    box-shadow: 4px 6px 7px rgba(0, 0, 0, 0.363);
+    flex-grow: inherit;
+}
+
+
+nav a
+{
+    text-decoration: none;
+    font-size: 20px;
+    color: #f1ead8;
+}
+
+nav a:hover
+{
+    color: #f1ad65;
+}
+
+.left
+{
+    align-content: flex-start;
+    display: flex;
+    font-size: 27px;
+    margin-left: 20px;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+
+.right
+{
+    align-items: center;
+    display: flex;
+    align-self: baseline;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#profile img
+{
+    border-radius: 50%;
+}
+
+.parent
+{
+    display: flex;
+    gap: 8rem;
+    margin-bottom: 90px;
+    color: #d9764d;
+}
+
+.parent a
+{
+    color: white;
+    max-width:max-content;
+}
+.parent a:hover
+{
+    color:#d9764d;
+}
+
+
+
+footer
+{
+    margin-top: 30px;
+    max-height: max-content;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: #4c4b2c;
+}
+
+footer div a
+{
+    display: block;
+    text-decoration: none;
+    
+}
+
+.FU
+{
+    margin-left: 20px;
+}
+
+footer h1
+{
+    color: #fbf5e9;
+    margin-bottom: -20px;
+    margin-left: 30px;
+    font-size: 60px;
+}
+
+footer p
+{
+    margin-top: 0px;
+    text-align: right; 
+    margin-right: 30px;
+    color: #fbf5e9;
+}
+
+#decor
+{
+    color:#f4ce6b;
+}
+
+
+/* Hides menu button on large screens */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #231f20;
+  }
+  
+  /* Mobile view adjustments */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .right {
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    #look {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 15px;
+      height: auto;
+      display: none;
+    }
+  
+    nav.show {
+      display: flex;
+    }
+  }
+
+ 
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #2b2522; /* dark brown */
+    border-radius: 50px;
+    padding: 5px;
+    width: 250px;
+  }
+  
+  .search-bar input {
+    border: none;
+    background: transparent;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  .search-bar button {
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-bar button img {
+    width: 16px;
+    height: 16px;
+  }
+  

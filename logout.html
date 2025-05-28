@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel ="stylesheet" href="Style.css">
+
+    <style>
+        .container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-panel {
+  width: 60%;
+  background: url('https://images.unsplash.com/photo-1598928506312-0c7e8d3e5049') center/cover no-repeat;
+  padding: 50px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.left-panel h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.left-panel span {
+  color: #f0c15f;
+}
+
+.left-panel p {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.social-icons img {
+  width: 30px;
+  margin-right: 10px;
+  filter: invert(1);
+}
+
+.form-panel {
+    margin: 50px;
+  width: 40%;
+  background: #3f3c2f;
+  padding: 60px 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form h2 {
+  color: #f0c15f;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+form p {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+form label {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+form input[type="email"],
+form input[type="password"] {
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+form button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #f0c15f;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #e6b94d;
+}
+
+.terms {
+  margin-top: 15px;
+  font-size: 0.75rem;
+}
+
+.terms a {
+  color: #f0c15f;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+    </style>
+</head>
+<body>
+    
+    <div>
+        <header>
+            <div class="left">
+                <img src="/picture/logo.JPG" width="100px" height="90px" style="border-radius: 50%; margin-right: 10px;" />
+                <h3>Homely <a id="decor">Decor</a></h3>
+          </div>
+      
+          
+
+          <div class="right">
+            <div class="search-bar">
+              <input type="text" id="searchInput" placeholder="Search...">
+              <button onclick="handleSearch()">
+                <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search" />
+              </button>
+            </div>
+            <a href="profile.html" id="profile">
+              <img src="" width="36px" height="36px" />
+            </a>
+            <a href="cart.html"><img src="/picture/pngimg.com - shopping_cart_PNG10.png" width="36px" height="36px" /></a>
+      
+            <!-- Hamburger menu -->
+            <button class="menu-toggle" onclick="toggleNav()">☰</button>
+          </div>
+        </header>
+      
+        <nav id="responsive-nav">
+          <a href="index.html">Home</a>
+          <a href="About.html">About</a>
+          <a href="Products.html">Products</a>
+          <a href="Vouchers.html">Vouchers</a>
+        </nav>
+      </div>
+    <script>
+        function toggleNav() {
+          document.getElementById("responsive-nav").classList.toggle("show");
+        }
+
+        function handleSearch() {
+  const query = document.getElementById("searchInput").value.trim();
+  if (query !== "") {
+    alert("You searched for: " + query);
+    // Optionally: redirect to a results page
+    // window.location.href = "search.html?q=" + encodeURIComponent(query);
+  } else {
+    alert("Please enter a search term.");
+  }
+}
+      </script>
+
+
+<div class="container">
+    <div class="left-panel" id="left-panel">
+      <h1 id="welcome-text">WELCOME,<br><span>BACK HOMIE!</span></h1>
+      <p id="desc-text">Glad you're here again! Check out what's new and grab your favorites.</p>
+      <div class="social-icons">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png"/>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png"/>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png"/>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/macos-close.png"/>
+      </div>
+    </div>
+
+    <div class="form-panel">
+      <form id="login-form">
+        <h2 id="form-title">LOG IN</h2>
+        <p>Don’t Have An Account? <a href="#" onclick="toggleForm()">Sign up here.</a></p>
+        <label>Email Address:</label>
+        <input type="email" required />
+        <label>Password:</label>
+        <input type="password" required />
+        <label><input type="checkbox" /> Remember Me</label>
+        <button type="submit">Log In</button>
+        <p class="terms">By clicking 'Log In' You agree to<br><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+      </form>
+
+      <form id="signup-form" class="hidden" onsubmit="handleSignUp(event)">
+        <h2>SIGN UP</h2>
+        <p>Already Registered? <a href="#" onclick="toggleForm()">Log in here.</a></p>
+        
+        <label>Email Address:</label>
+        <input type="email" id="signup-email" required />
+        
+        <label>Password:</label>
+        <input type="password" id="signup-password" required />
+        
+        <label><input type="checkbox" /> Remember Me</label>
+        
+        <button type="submit">Sign in Now</button>
+        
+        <p class="terms">By clicking 'Sign in Now' You agree to<br>
+          <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+<script>
+
+function handleSignUp(event) {
+  event.preventDefault(); // Prevent form submission
+
+  const emailInput = document.getElementById("signup-email");
+  const passwordInput = document.getElementById("signup-password");
+  const password = passwordInput.value;
+
+  if (!isStrongPassword(password)) {
+    alert("Weak password! Use at least 8 characters, including uppercase, lowercase, number, and symbol.");
+    return;
+  }
+
+  // Simulate sign-in success
+  alert("You are signed in with a strong password!");
+
+  // Clear form
+  emailInput.value = "";
+  passwordInput.value = "";
+}
+
+// Password strength validation (like Google's)
+function isStrongPassword(password) {
+  const minLength = 8;
+  const hasUpper = /[A-Z]/.test(password);
+  const hasLower = /[a-z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+  const hasSpecial = /[\W_]/.test(password);
+
+  return password.length >= minLength && hasUpper && hasLower && hasNumber && hasSpecial;
+}
+
+    function toggleForm() {
+  const loginForm = document.getElementById("login-form");
+  const signupForm = document.getElementById("signup-form");
+  const leftPanel = document.getElementById("left-panel");
+  const welcomeText = document.getElementById("welcome-text");
+  const descText = document.getElementById("desc-text");
+  const formTitle = document.getElementById("form-title");
+
+  loginForm.classList.toggle("hidden");
+  signupForm.classList.toggle("hidden");
+
+  if (signupForm.classList.contains("hidden")) {
+    // Back to login
+    leftPanel.style.backgroundImage = "url('https://images.unsplash.com/photo-1598928506312-0c7e8d3e5049')";
+    welcomeText.innerHTML = "WELCOME,<br><span>BACK HOMIE!</span>";
+    descText.textContent = "Glad you're here again! Check out what's new and grab your favorites.";
+  } else {
+    // Go to signup
+    leftPanel.style.backgroundImage = "url('https://images.unsplash.com/photo-1598928896310-b2f8c8bfe338')";
+    welcomeText.innerHTML = "WELCOME,<br><span>NEW HOMIE!</span>";
+    descText.textContent = "Glad you're here! Dive into new styles and score your perfect match.";
+  }
+}
+</script>
+
+
+<footer>
+    
+    <div class="parent">
+        <div class="FU">
+            <h3>FOLLOW US</h3>
+            <a href="https://www.facebook.com" target="_blank">FACEBOOK</a>
+            <a href="https://www.instagram.com" target="_blank">INSTAGRAM</a>
+        </div>
+    
+        <div class="contact">
+            <h3>CONTACT</h3>
+            <a href="mailto:example@email.com">EMAIL</a>
+            <a href="tel:+1234567890">NUMBER</a>
+            <a href="https://maps.google.com" target="_blank">LOCATION</a>
+        </div>
+    
+        <div class="help">
+            <h3>HELP</h3>
+            <a href="faqs.html">FAQs</a>
+            <a href="maintenance.html">MAINTENANCE TIPS</a>
+            <a href="warranty.html">WARRANTY INFORMATION</a>
+            <a href="wishlist.html">WISHLIST</a>
+        </div>
+</div>
+
+
+    <h1>HOMELY <a id="decor">DECOR</a></h1>
+    <p >©HOMELY DECOR All rights Reserved</p>
+
+
+
+
+</footer>
+</body>
+</html>

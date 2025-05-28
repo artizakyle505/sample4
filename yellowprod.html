@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel ="stylesheet" href="Style.css">
+</head>
+<body>
+    <div>
+        <header>
+          <div class="left">
+            <img src="" width="90px" height="90px" style="border-radius: 50%; margin-right: 10px;" />
+            <h3>Homely <a id="decor">Decor</a></h3>
+          </div>
+      
+          <div class="right">
+            <form>
+              <input id="look" placeholder="Search" />
+            </form>
+            <a href="profile.html" id="profile">
+              <img src="" width="36px" height="36px" />
+            </a>
+            <a href="#"><img src="/picture/pngimg.com - shopping_cart_PNG10.png" width="36px" height="36px" /></a>
+      
+            <!-- Hamburger menu -->
+            <button class="menu-toggle" onclick="toggleNav()">☰</button>
+          </div>
+        </header>
+      
+        <nav id="responsive-nav">
+          <a href="index.html">Home</a>
+          <a href="About.html">About</a>
+          <a href="Products.html">Products</a>
+          <a href="Vouchers.html">Vouchers</a>
+        </nav>
+      </div>
+    <script>
+        function toggleNav() {
+          document.getElementById("responsive-nav").classList.toggle("show");
+        }
+      </script>
+
+
+
+
+    <footer>
+    
+        <div class="parent">
+            <div class="FU">
+                <h3>FOLLOW US</h3>
+                <a href="https://www.facebook.com" target="_blank">FACEBOOK</a>
+                <a href="https://www.instagram.com" target="_blank">INSTAGRAM</a>
+            </div>
+        
+            <div class="contact">
+                <h3>CONTACT</h3>
+                <a href="mailto:example@email.com">EMAIL</a>
+                <a href="tel:+1234567890">NUMBER</a>
+                <a href="https://maps.google.com" target="_blank">LOCATION</a>
+            </div>
+        
+            <div class="help">
+                <h3>HELP</h3>
+                <a href="faqs.html">FAQs</a>
+                <a href="maintenance.html">MAINTENANCE TIPS</a>
+                <a href="warranty.html">WARRANTY INFORMATION</a>
+                <a href="wishlist.html">WISHLIST</a>
+            </div>
+    </div>
+    
+    
+        <h1>HOMELY <a id="decor">DECOR</a></h1>
+        <p >©HOMELY DECOR All rights Reserved</p>
+    
+    
+    
+    
+    </footer>
+    
+</body>
+</html>
